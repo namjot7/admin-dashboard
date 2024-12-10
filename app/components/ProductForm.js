@@ -61,7 +61,7 @@ const ProductForm = ({
     }
     const uploadImages = async (e) => {
         const files = e.target?.files; // e.target?.files
-        // console.log(files);
+        console.log(files);
 
         if (!files || files.length == 0) {
             console.error('No files selected');
@@ -79,7 +79,7 @@ const ProductForm = ({
 
         // Print Formdata object
         for (let pair of data.entries()) { // let [key,value] of data.entries()
-            console.log(pair);
+            // console.log(pair);
         }
         const response = await fetch('/api/upload', {
             method: 'POST', // headers are automatically added using FormData
