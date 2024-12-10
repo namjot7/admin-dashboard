@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+  @apply text-2xl mb-5 font-semibold;
+}
+
+input,
+textarea {
+  @apply text-black w-full rounded-sm py-1 px-2 mb-5 outline-none;
+}
+
+input:focus,
+textarea:focus {
+  @apply ring-2 ring-blue-700 ring-offset-2;
+}
+
+.btn-primary {
+  @apply bg-primary text-lg rounded-md py-1 px-3 w-full;
+}
+
+.btn-primary:hover {
+  @apply bg-primary_hover;
+}
+table.basic {
+  @apply w-full;
+}
+table.basic thead {
+  @apply bg-gray-400 text-black text-lg;
+}
+table.basic tr td {
+  @apply border border-gray-600 py-2;
+}
+table.basic {
+}
+/* table Link{
+    @apply bg-primary
+} */
