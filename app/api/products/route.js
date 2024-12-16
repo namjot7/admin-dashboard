@@ -34,9 +34,9 @@ export const PUT = async (req) => {
     await initMongoose();
 
     const body = await req.json();
-    const { title, description, price, _id } = body;
+    const { title, description, price, _id, images } = body;
     // console.log("console: ", body);
-    await Product.updateOne({ _id }, { title, description, price }); // id (search) must be an object
+    await Product.updateOne({ _id }, { title, description, price, images }); // id (search) must be an object
 
     return NextResponse.json({ msg: "Updated successfully." });
 

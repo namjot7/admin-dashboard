@@ -30,10 +30,10 @@ const Product = () => {
                             <td className='flex gap-3'>
                                 {/* {`/products/edit/${p_id}`} */}
                                 <Link href={"/products/edit/" + product._id} className='bg-primary hover:bg-primary_hover flex gap-2 px-2 py-1 rounded-md '>
-                                    <img src="edit.svg" /> Edit
+                                    <span><img src="edit.svg" /> Edit</span>
                                 </Link>
                                 <Link href={"/products/delete/" + product._id} className='bg-red-600 hover:bg-red-700 flex gap-2 px-2 py-1 rounded-md '>
-                                    <img src="delete.svg" /> Delete
+                                    <span><img src="delete.svg" /> Delete</span>
                                 </Link>
                             </td>
                         </tr>
