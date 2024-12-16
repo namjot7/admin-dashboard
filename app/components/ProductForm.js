@@ -2,6 +2,8 @@
 // import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
+import { ReactSortable } from 'react-sortablejs';
+// import Sortable from 'sortablejs';
 import { SpinnerDotted } from 'spinners-react';
 
 const ProductForm = ({
@@ -74,6 +76,7 @@ const ProductForm = ({
 
         if (!files || files.length == 0) {
             console.error('No files selected');
+            setLoading(false);
             return;
         }
         const data = new FormData();
@@ -94,22 +97,42 @@ const ProductForm = ({
             method: 'POST', // headers are automatically added using FormData
             body: data,
         })
-            .then(res2 => res2.json())
-            // 1) Save to AWS S3 Bucket
-            //     .then(linksData => { // links or paths
-            //         setImages(prevImages => [...prevImages, ...linksData.links]);
-            //         // console.log('Uploaded images:', ...linksData.links);
-            //     })
-            // 2) Save to local storage
-            .then(paths => {
-                // console.log("paths:", paths.filepaths);
-                for (let filePath of paths.filepaths) {
-                    let newPath = filePath.split("public")[1]; // remove public from the path to use it in image "src" attribute
-                    // console.log({ filePath, newPath });
-                    setImages(prevImages => [...prevImages, newPath]);
-                }
-            })
-        setLoading(false);
+        // 1) Save to local storage
+        const paths = await res.json()
+        const tempPaths = [];
+
+        for (let filePath of paths.filepaths) {
+            let newPath = filePath.split("public")[1]; // remove public from the path to use it in image "src" attribute
+            tempPaths.push(newPath)
+            // console.log("paths:", paths.filepaths);
+            // console.log({ filePath, newPath });
+        }
+        // 2) Save to AWS S3 Bucket (Made some changes, unsure if it works)
+        // const links = await res.json()
+        // const tempLinks = [];
+
+        // for (let link of links.links) {// links
+        //     tempLinks.push(link)
+        //     // console.log('Uploaded images:', ...linksData.links);
+        // }
+
+        // Delay by 1000ms
+        setTimeout(() => {
+            setImages(prevImages => [...prevImages, ...tempPaths]); // Public folder
+            // setImages(prevImages => [...prevImages, ...tempLinks]); // AWS
+            setLoading(false);
+        }, 1000);
+    }
+    // Update the sorted images
+    // const updateImagesOrder = (images) => {
+    //     console.log(images);
+
+    // }
+    function updateImagesOrder(images) {
+        console.log("sorted func", arguments); // three arguments: images Array, (do not know what the fuck the other two are) parent div, dragging object
+        console.log(images);
+        setImages(images)
+
     }
 
     return (
@@ -132,7 +155,7 @@ const ProductForm = ({
             <div className='flex flex-col gap-1'>
                 <label>Photos</label>
 
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-2">
                     {/* AWS */}
                     {/* {!!images.length && images.map(link => (
                         <div key={link} className="w-28 h-28">
@@ -141,14 +164,20 @@ const ProductForm = ({
                     ))} */}
 
                     {/* Public folder */}
-                    {!!images.length && images.map((filepath) => (
-                        <div key={filepath} className="bg-white p-2 rounded-lg w-24 h-24">
-                            <img className="rounded-lg w-full h-full object-fill" src={filepath} alt="productImage" />
-                        </div>
-                    ))}
-                    {/* <img src="/uploads/1734319282217.jpg" alt="" /> */}
+                    <ReactSortable className="flex flex-wrap gap-2"
+                        list={images} setList={updateImagesOrder}>
+                        {!!images.length && images.map((filepath) => (
+                            <div key={filepath} className="bg-white p-2 rounded-lg w-24 h-24">
+                                <img className="rounded-lg w-full h-full object-fill" src={filepath} alt="productImage" />
+                            </div>
+                        ))}
+                    </ReactSortable>
 
-                    {loading && <SpinnerDotted size="40px" color='#1a56db' />}
+                    {loading && (
+                        <div className='h-24 w-24 flex justify-center items-center'>
+                            <SpinnerDotted size="35px" color='white' />
+                        </div>
+                    )}
 
                     <label className='cursor-pointer w-24 h-24 flex gap-1 items-center rounded-lg bg-gray-200 text-gray-500'>
                         <img src="/upload.svg" alt="" />Upload

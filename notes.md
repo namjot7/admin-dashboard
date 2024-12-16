@@ -44,3 +44,12 @@ As I am usig direct method for POST the upload request, I am not gettig the file
 ```` 
 file.readFileSync(filepath) 
 ````
+
+### Another way to handle the fetch request
+````
+.then(res2 => res2.json())
+.then(linksData => { // links or paths
+    setImages(prevImages => [...prevImages, ...linksData.links]);
+    // console.log('Uploaded images:', ...linksData.links);
+ })
+````
