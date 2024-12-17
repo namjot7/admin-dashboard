@@ -9,16 +9,14 @@ export default function Home() {
 
   return (
     <Layout>
-
-      <div className="flex justify-between items-center">
+      <div className="">
         <div>Hello, {session?.user?.name}</div>
 
-        <div className="flex gap-2 items-center bg-primary px-2 py-1 rounded-lg">
+        <div className="absolute top-4 right-32 flex-center btn-primary py-2">
           <img className="w-6 rounded-full" src={session?.user?.image} alt="profile picture" />
           <span>{session?.user?.name}</span>
         </div>
       </div>
-
     </Layout>
   )
 

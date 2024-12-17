@@ -20,7 +20,7 @@ export default function Layout({ children }) {
     return (
         <div className="flex bg-primary  w-screen h-screen text-white">
             <Nav />
-            <button onClick={() => signOut()} className="absolute top-20 right-2 bg-white text-black rounded-md py-1 px-3">Sign out</button>
+            <button onClick={() => signOut()} className="absolute top-4 right-4 bg-white text-black rounded-md py-1 px-3">Sign out</button>
             <div className="p-5 bg-gray-800 text-white flex-grow rounded-lg">
                 {children}
             </div>

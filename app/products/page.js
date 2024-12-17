@@ -15,8 +15,9 @@ const Product = () => {
 
     return (
         <Layout>
-            <Link href="/products/add" className='btn-primary'>Add Product</Link>
-            <table className='basic mt-12'>
+            <Link href="/products/add" className='absolute top-4 right-32 bg-primary hover:bg-primary_hover rounded-md py-1 px-3'>Add Product</Link>
+            <h1>All Products</h1>
+            <table className='basic'>
                 <thead>
                     <tr>
                         <td>Product Name</td>
@@ -29,11 +30,13 @@ const Product = () => {
                             <td>{product.title}</td>
                             <td className='flex gap-3'>
                                 {/* {`/products/edit/${p_id}`} */}
-                                <Link href={"/products/edit/" + product._id} className='bg-primary hover:bg-primary_hover flex gap-2 px-2 py-1 rounded-md '>
-                                    <span><img src="edit.svg" /> Edit</span>
+                                <Link href={"/products/edit/" + product._id} className='btn-edit'>
+                                    <img src="edit.svg" />
+                                    <span>Edit</span>
                                 </Link>
-                                <Link href={"/products/delete/" + product._id} className='bg-red-600 hover:bg-red-700 flex gap-2 px-2 py-1 rounded-md '>
-                                    <span><img src="delete.svg" /> Delete</span>
+                                <Link href={"/products/delete/" + product._id} className='btn-delete'>
+                                    <img src="delete.svg" />
+                                    <span>Delete</span>
                                 </Link>
                             </td>
                         </tr>

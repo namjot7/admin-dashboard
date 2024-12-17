@@ -36,7 +36,7 @@ const ProductForm = ({
         e.preventDefault();
 
         const productData = { title, description, price, _id, images };
-        console.log("productData", productData);
+        // console.log("productData", productData);
 
         // Watch the video to send data using AXIOS
 
@@ -66,7 +66,7 @@ const ProductForm = ({
 
 
     useEffect(() => {
-        console.log('Useffect:', images);
+        // console.log('Useffect:', images);
     }, [images]);
 
     const uploadImages = async (e) => {
@@ -129,10 +129,9 @@ const ProductForm = ({
 
     // }
     function updateImagesOrder(images) {
-        console.log("sorted func", arguments); // three arguments: images Array, (do not know what the fuck the other two are) parent div, dragging object
-        console.log(images);
+        // console.log("sorted func", arguments); // three arguments: images Array, (do not know what the fuck the other two are) parent div, dragging object
+        // console.log(images);
         setImages(images)
-
     }
 
     return (
@@ -185,7 +184,7 @@ const ProductForm = ({
                     </label>
                 </div>
             </div>
-            <button type='submit' className='btn-primary mt-5'>Save</button>
+            <button type='submit' className='btn-primary mt-5 w-full'>Save</button>
 
         </form >
     )

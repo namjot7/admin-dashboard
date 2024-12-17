@@ -2,38 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Headings  */
+
 h1 {
   @apply text-2xl mb-5 font-semibold;
 }
 
-input,
-textarea {
-  @apply text-black w-full rounded-sm py-1 px-2 mb-5 outline-none;
-}
-
-input:focus,
-textarea:focus {
-  @apply ring-2 ring-blue-700 ring-offset-2;
-}
+/* Buttons */
 
 .btn-primary {
-  @apply bg-primary text-lg rounded-md py-1 px-3 w-full;
+  @apply bg-primary text-base rounded-md py-1 px-3;
 }
 
 .btn-primary:hover {
   @apply bg-primary_hover;
 }
-table.basic {
-  @apply w-full;
+.btn-edit {
+  @apply bg-primary hover:bg-primary_hover flex gap-2 px-3 py-1 rounded-md;
 }
+.btn-delete {
+  @apply bg-red-600 hover:bg-red-700 flex gap-2 px-3 py-1 rounded-md;
+}
+.flex-center {
+  @apply flex gap-2 items-center justify-center;
+}
+/* Form fields */
+
+input,
+textarea,
+select {
+  @apply text-black w-full rounded-sm py-1 px-2 mb-5 outline-none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  @apply ring-2 ring-blue-700 ring-offset-2;
+}
+
+/* Table */
+
+table.basic {
+  @apply w-3/4 mt-10 ml-10;
+}
+
 table.basic thead {
-  @apply bg-gray-400 text-black text-lg;
+  @apply bg-gray-900 text-lg;
 }
+
 table.basic tr td {
-  @apply border border-gray-600 py-2;
+  @apply border border-gray-600 py-2 px-4;
 }
-table.basic {
-}
-/* table Link{
-    @apply bg-primary
-} */
