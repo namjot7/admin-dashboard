@@ -9,7 +9,7 @@ export const GET = async () => {
     // const body = await req.json();
     // console.log(body);
     const categories = await Category.find().populate('parent');
-    // console.log(categories);
+    console.log(categories);
 
     return NextResponse.json({ categories, success: true, });
 }
@@ -17,12 +17,13 @@ export const GET = async () => {
 export const POST = async (req) => {
     await initMongoose();
 
-    const { category, parentCategory } = await req.json();; // body
-    // console.log({ category, parentCategory });
+    const { category, parentCategory, properties } = await req.json();; // body
+    // console.log({ category, parentCategory, properties });
 
     const categoryDoc = await Category.create({
         name: category,
         parent: parentCategory || null, // to avoid validation error
+        properties,
     });
     // console.log("result", categoryDoc);
     return NextResponse.json({ success: true, categoryDoc });
@@ -31,12 +32,13 @@ export const POST = async (req) => {
 export const PUT = async (req) => {
     await initMongoose();
 
-    const { _id, category, parentCategory } = await req.json(); // body
+    const { _id, category, parentCategory, properties } = await req.json(); // body
     console.log("PUT method: ", { _id, category, parentCategory });
 
     const result = await Category.updateOne({ _id }, {
         name: category,
-        parent: parentCategory
+        parent: parentCategory,
+        properties,
     });
     console.log("result", result);
 

@@ -13,7 +13,7 @@ const Nav = () => {
     const activeLink = inactiveLink + " bg-white text-black";
 
     return (
-        <aside className='p-3 pr-0 w-1/4 md:w-1/6'>
+        <aside className='p-3 pr-0 w-1/4 hidden md:block md:w-1/6'>
             <div className='flex mb-5'>
                 <Link href={"/"} className='flex gap-1'>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">

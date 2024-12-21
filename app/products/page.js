@@ -15,7 +15,7 @@ const Product = () => {
 
     return (
         <Layout>
-            <Link href="/products/add" className='absolute top-4 right-32 bg-primary hover:bg-primary_hover rounded-md py-1 px-3'>Add Product</Link>
+            <Link href="/products/add" className='absolute top-6 right-28 bg-primary hover:bg-primary_hover rounded-md py-1 px-3'>Add Product</Link>
             <h1>All Products</h1>
             <table className='basic'>
                 <thead>

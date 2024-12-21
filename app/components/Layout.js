@@ -18,10 +18,10 @@ export default function Layout({ children }) {
     }
     // Logged in
     return (
-        <div className="flex bg-primary  w-screen h-screen text-white">
+        <div className="flex bg-primary max-w-screen min-h-screen text-white">
             <Nav />
-            <button onClick={() => signOut()} className="absolute top-4 right-4 bg-white text-black rounded-md py-1 px-3">Sign out</button>
-            <div className="p-5 bg-gray-800 text-white flex-grow rounded-lg">
+            <button onClick={() => signOut()} className="absolute top-6 right-6 bg-white text-black rounded-md py-1 px-3">Sign out</button>
+            <div className="p-5 m-3 bg-gray-800 text-white flex-grow rounded-lg">
                 {children}
             </div>
         </div>

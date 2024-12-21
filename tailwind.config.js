@@ -9,8 +9,10 @@ module.exports = {
     extend: {
       colors: {
         primary: '#006A67',
-        primary_hover: '#058a86',
-        danger: "#ff0505"
+        primary_hover: '#0a7c79',
+        secondary: "#096baa",
+        secondary_hover: "#045a91",
+        danger: "#cc0202",
         // foreground: "var(--foreground)",
       },
     },

@@ -8,24 +8,34 @@ h1 {
   @apply text-2xl mb-5 font-semibold;
 }
 
+h2,
+.h2 {
+  @apply text-lg mb-1 font-medium;
+}
+
 /* Buttons */
 
 .btn-primary {
-  @apply bg-primary text-base rounded-md py-1 px-3;
+  @apply bg-primary text-base rounded-md py-1 px-3 hover:bg-primary_hover;
 }
 
-.btn-primary:hover {
-  @apply bg-primary_hover;
+.btn-secondary {
+  @apply bg-secondary hover:bg-secondary_hover text-base rounded-md py-0.5 px-3;
 }
+
 .btn-edit {
   @apply bg-primary hover:bg-primary_hover flex gap-2 px-3 py-1 rounded-md;
 }
+
 .btn-delete {
-  @apply bg-red-600 hover:bg-red-700 flex gap-2 px-3 py-1 rounded-md;
+  @apply bg-danger hover:bg-red-700 flex gap-2 px-3 py-1 rounded-md;
 }
+
+/* Flex center center */
 .flex-center {
   @apply flex gap-2 items-center justify-center;
 }
+
 /* Form fields */
 
 input,

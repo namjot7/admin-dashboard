@@ -11,14 +11,15 @@ const EditProduct = ({ params }) => {
     // console.log(productId);
 
     // Get the product using ID
-    async function getData(productId) {
+    const getData = async (productId) => {
         await fetch("/api/products?id=" + productId)
             .then(res => res.json())
             .then(data => setProductInfo(data)); // store product data inside State variable
     }
     useEffect(() => {
-        if (!productId) return; // No ID --> return
-
+        if (!productId) { // No ID --> return
+            return;
+        }
         getData(productId);
     }, [productId])
 

@@ -27,16 +27,16 @@ export const POST = async (req) => {
     const body = await req.json(); // Parse request body
     const product = await Product.create(body); // Add product to DB
 
-    return NextResponse.json(product, { status: 201 });
+    return NextResponse.json(product);
 };
 
 export const PUT = async (req) => {
     await initMongoose();
 
     const body = await req.json();
-    const { title, description, price, _id, images } = body;
+    const { title, description, price, _id, images, category } = body;
     // console.log("console: ", body);
-    await Product.updateOne({ _id }, { title, description, price, images }); // id (search) must be an object
+    await Product.updateOne({ _id }, { title, description, price, images, category }); // id (search) must be an object
 
     return NextResponse.json({ msg: "Updated successfully." });
 

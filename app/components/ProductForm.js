@@ -11,16 +11,18 @@ const ProductForm = ({
     title: existingTitle,
     description: existingDescription,
     price: existingPrice,
-    images: existingImages
+    images: existingImages,
+    category: existingCategory
 }) => {
     const router = useRouter();
     // console.log(existingTitle, existingDescription, existingPrice, _id);
-
     const [title, setTitle] = useState(existingTitle || "");
     const [description, setDescription] = useState(existingDescription || "");
     const [price, setPrice] = useState(existingPrice || "");
     const [images, setImages] = useState(existingImages || []);
+    const [category, setCategory] = useState(existingCategory || "") // value of <select> cannot be null
 
+    const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(false) // spin animation on uploading image
 
     // To load the existing product details on opening the page / update state for form fields when props change
@@ -29,14 +31,15 @@ const ProductForm = ({
         setDescription(existingDescription || "");
         setPrice(existingPrice || "");
         setImages(existingImages || []);
+        setCategory(existingCategory || "");
     }, [existingTitle, existingDescription, existingPrice, existingImages])
 
     // Form submission
     const saveProduct = async (e) => {
         e.preventDefault();
 
-        const productData = { title, description, price, _id, images };
-        // console.log("productData", productData);
+        const productData = { title, description, price, _id, images, category };
+        console.log("productData", productData);
 
         // Watch the video to send data using AXIOS
 
@@ -63,12 +66,6 @@ const ProductForm = ({
         // setgotoProducts(true); // might not need
         router.push('/products'); // redirect to the products page
     }
-
-
-    useEffect(() => {
-        // console.log('Useffect:', images);
-    }, [images]);
-
     const uploadImages = async (e) => {
         const files = e.target?.files; // e.target?.files
         // console.log(files);
@@ -128,11 +125,23 @@ const ProductForm = ({
     //     console.log(images);
 
     // }
-    function updateImagesOrder(images) {
+    const updateImagesOrder = (images) => {
         // console.log("sorted func", arguments); // three arguments: images Array, (do not know what the fuck the other two are) parent div, dragging object
         // console.log(images);
         setImages(images)
     }
+
+    const getCategories = async () => {
+        const res = await fetch('/api/categories');
+        const data = await res.json();
+        // console.log(data.categories);
+        // console.log(categories);
+        setCategories(data.categories);
+    }
+
+    useEffect(() => {
+        getCategories();
+    }, []);
 
     return (
         <form onSubmit={e => { saveProduct(e) }} className='max-w-[600px] ml-10'>
@@ -150,6 +159,17 @@ const ProductForm = ({
             <div className='flex flex-col gap-1'>
                 <label>Price (in CAD)</label>
                 <input name='price' type="text" value={price} onChange={e => setPrice(e.target.value)} />
+            </div>
+            <div className='flex flex-col gap-1'>
+                <label>Category</label>
+
+                <select value={category}
+                    onChange={e => setCategory(e.target.value)}>
+                    <option value="">Uncategorized</option>
+                    {categories.length > 0 && categories.map(cat => (
+                        <option key={cat._id} value={cat._id}>{cat.name}</option>
+                    ))}
+                </select>
             </div>
             <div className='flex flex-col gap-1'>
                 <label>Photos</label>
