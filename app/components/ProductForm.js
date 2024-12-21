@@ -12,7 +12,8 @@ const ProductForm = ({
     description: existingDescription,
     price: existingPrice,
     images: existingImages,
-    category: existingCategory
+    category: existingCategory,
+    properties: existingProperties,
 }) => {
     const router = useRouter();
     // console.log(existingTitle, existingDescription, existingPrice, _id);
@@ -21,7 +22,7 @@ const ProductForm = ({
     const [price, setPrice] = useState(existingPrice || "");
     const [images, setImages] = useState(existingImages || []);
     const [category, setCategory] = useState(existingCategory || "") // value of <select> cannot be null
-
+    const [productProperties, setProductProperties] = useState(existingProperties || {});
     const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(false) // spin animation on uploading image
 
@@ -32,13 +33,14 @@ const ProductForm = ({
         setPrice(existingPrice || "");
         setImages(existingImages || []);
         setCategory(existingCategory || "");
-    }, [existingTitle, existingDescription, existingPrice, existingImages])
+        setProductProperties(existingProperties || {});
+    }, [existingTitle, existingDescription, existingPrice, existingImages, existingCategory, existingProperties])
 
     // Form submission
     const saveProduct = async (e) => {
         e.preventDefault();
 
-        const productData = { title, description, price, _id, images, category };
+        const productData = { title, description, price, _id, images, category, productProperties };
         console.log("productData", productData);
 
         // Watch the video to send data using AXIOS
@@ -63,8 +65,8 @@ const ProductForm = ({
                 body: JSON.stringify(productData),
             })
         }
-        // setgotoProducts(true); // might not need
         router.push('/products'); // redirect to the products page
+        // setgotoProducts(true); // might not need
     }
     const uploadImages = async (e) => {
         const files = e.target?.files; // e.target?.files
@@ -143,6 +145,32 @@ const ProductForm = ({
         getCategories();
     }, []);
 
+    // Show the properties in Product page
+    const propertiesToFill = [];
+    if (categories.length > 0 && category) { // categories exists and editing one specific category
+        const categoryInfo = categories.find(({ _id }) => _id == category);
+        propertiesToFill.push(...categoryInfo.properties); // adding to existing elements
+        // console.log(categoryInfo);
+        // console.log(propertiesToFill);
+
+        // Add parent properties to child if they exists
+        if (categoryInfo?.parent?._id) {
+            let parentInfo = categoryInfo.parent;
+            let parentProps = parentInfo?.properties;
+            propertiesToFill.push(...parentProps)
+            // console.log("paretn exists", parentInfo.properties);
+            // console.log({ withParent: propertiesToFill });
+        }
+    }
+    const setProductProp = (propName, value) => {
+        setProductProperties(prev => {
+            const newProductProp = { ...prev };
+            newProductProp[propName] = value;
+            console.log(newProductProp, newProductProp[propName]);
+            return newProductProp;
+        })
+
+    }
     return (
         <form onSubmit={e => { saveProduct(e) }} className='max-w-[600px] ml-10'>
             <div className='flex flex-col gap-1'>
@@ -151,14 +179,6 @@ const ProductForm = ({
                     type="text"
                     value={title}
                     onChange={e => setTitle(e.target.value)} />
-            </div>
-            <div className='flex flex-col gap-1'>
-                <label>Description</label>
-                <textarea name="description" id="" value={description} onChange={e => setDescription(e.target.value)} rows={5} />
-            </div>
-            <div className='flex flex-col gap-1'>
-                <label>Price (in CAD)</label>
-                <input name='price' type="text" value={price} onChange={e => setPrice(e.target.value)} />
             </div>
             <div className='flex flex-col gap-1'>
                 <label>Category</label>
@@ -171,6 +191,29 @@ const ProductForm = ({
                     ))}
                 </select>
             </div>
+            <div className='flex flex-col gap-1'>
+                <label>Description</label>
+                <textarea name="description" id="" value={description} onChange={e => setDescription(e.target.value)} rows={5} />
+            </div>
+            <div className='flex flex-col gap-1'>
+                <label>Price (in CAD)</label>
+                <input name='price' type="text" value={price} onChange={e => setPrice(e.target.value)} />
+            </div>
+
+            {propertiesToFill.length > 0 && propertiesToFill.map(p => (
+                <div key={p.name}>
+                    <label>{p.name}</label>
+                    <select value={productProperties[p.name]} onChange={e =>
+                        setProductProp(p.name, e.target.value)
+                    }>
+                        <option value="0">None</option>
+                        {p.values.length > 0 && p.values.map(value =>
+                            <option key={value} value={value}>{value}</option>
+                        )}
+                    </select>
+                </div>
+            ))}
+
             <div className='flex flex-col gap-1'>
                 <label>Photos</label>
 

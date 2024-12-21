@@ -62,7 +62,6 @@ const Categories = ({ swal }) => {
         resetForm();
     }
 
-
     const editCategory = async (category) => {
         // console.log(category, category?.parent?.name);
         // console.log("UPDATE:", editingCategory);
@@ -74,7 +73,7 @@ const Categories = ({ swal }) => {
         setProperties(
             category.properties.map(({ name, values }) => ({
                 name,
-                values: values.join('.')
+                values: values.join(','),
             }))
         );
     }
@@ -140,10 +139,12 @@ const Categories = ({ swal }) => {
         setCategory("");
         setparentCategory('');
     }
+
     // Load all the categories from MongoDB
     useEffect(() => {
         getCategories()
     }, [])
+
 
     return (
         <Layout>
