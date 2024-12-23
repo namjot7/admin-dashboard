@@ -202,7 +202,7 @@ const ProductForm = ({
 
             {propertiesToFill.length > 0 && propertiesToFill.map(p => (
                 <div key={p.name}>
-                    <label>{p.name}</label>
+                    <label>{p.name[0].toUpperCase() + p.name.substring(1)}</label>
                     <select value={productProperties[p.name]} onChange={e =>
                         setProductProp(p.name, e.target.value)
                     }>
@@ -241,8 +241,10 @@ const ProductForm = ({
                         </div>
                     )}
 
-                    <label className='cursor-pointer w-24 h-24 flex gap-1 items-center rounded-lg bg-gray-200 text-gray-500'>
-                        <img src="/upload.svg" alt="" />Upload
+                    <label className='cursor-pointer w-24 h-24 flex items-center flex-col justify-center
+                            rounded-lg bg-white text-black'>
+                        <img src="/upload.svg" alt="" />
+                        <span className='text-primary'>Add Image</span>
                         <input type="file" onChange={e => uploadImages(e)} className='hidden' name="" id="" multiple />
                     </label>
                 </div>

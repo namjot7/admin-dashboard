@@ -31,6 +31,11 @@ h2,
   @apply bg-danger hover:bg-red-700 flex gap-2 px-3 py-1 rounded-md;
 }
 
+.btn-dark {
+  @apply bg-gray-100 text-black hover:bg-white;
+  transition: all 0.12s;
+}
+
 /* Flex center center */
 .flex-center {
   @apply flex gap-2 items-center justify-center;
@@ -47,19 +52,24 @@ select {
 input:focus,
 textarea:focus,
 select:focus {
-  @apply ring-2 ring-blue-700 ring-offset-2;
+  @apply ring-1 ring-blue-500 ring-offset-2;
 }
 
 /* Table */
 
 table.basic {
-  @apply w-3/4 mt-10 ml-10;
+  @apply w-3/4 bg-[#2d394a] rounded-md m-10 shadow-md shadow-gray-900;
 }
 
 table.basic thead {
-  @apply bg-gray-900 text-lg;
+  @apply text-lg font-semibold border-b border-gray-400;
 }
 
-table.basic tr td {
-  @apply border border-gray-600 py-2 px-4;
+table.basic thead tr td,
+tbody tr td {
+  @apply px-8 py-2;
+}
+
+table.basic td {
+  @apply py-1 my-1;
 }

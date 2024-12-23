@@ -1,16 +1,16 @@
 import { initMongoose } from "@/lib/mongoose";
 import { NextResponse } from "next/server";
 import Category from "@/models/Category";
-
+import { checkAdmin } from "../auth/[...nextauth]/route";
 
 export const GET = async () => {
     await initMongoose();
+    // await checkAdmin(req,res); // not working
 
     // const body = await req.json();
     // console.log(body);
     const categories = await Category.find().populate('parent');
-    console.log(categories);
-
+    // console.log(categories);
     return NextResponse.json({ categories, success: true, });
 }
 
@@ -33,14 +33,14 @@ export const PUT = async (req) => {
     await initMongoose();
 
     const { _id, category, parentCategory, properties } = await req.json(); // body
-    console.log("PUT method: ", { _id, category, parentCategory });
+    // console.log("PUT method: ", { _id, category, parentCategory });
 
     const result = await Category.updateOne({ _id }, {
         name: category,
         parent: parentCategory,
         properties,
     });
-    console.log("result", result);
+    // console.log("result", result);
 
     return NextResponse.json({ success: true });
 }

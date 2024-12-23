@@ -167,7 +167,12 @@ const Categories = ({ swal }) => {
                     </div>
                     <div className='flex flex-col gap-1 mb-4'>
                         <label className='h2'>Properties</label>
-                        <span><button onClick={ev => addProperty()} type='button' className='btn-secondary mb-2'>Add new property</button></span>
+                        <span>
+                            <button onClick={ev => addProperty()} type='button'
+                                className='btn-secondary  mb-2'>
+                                Add new property
+                            </button>
+                        </span>
 
                         {properties.length > 0 && properties.map((property, index) => (
                             <div key={index} className='flex gap-2'>
@@ -205,7 +210,7 @@ const Categories = ({ swal }) => {
                     <tbody>
                         {categories.map(category => (
                             <tr key={category._id}>
-                                <td>{category.name}</td>
+                                <td>{category.name[0].toUpperCase() + category.name.substring(1)}</td>
                                 <td>{category?.parent?.name || "-"}</td>
                                 <td className='flex-center'>
                                     <button onClick={e => editCategory(category)} className='flex-center btn-edit'>
