@@ -7,6 +7,8 @@ const ProductSchema = new Schema({
     images: [{ type: String }], // array of type strings (image location)
     category: { type: mongoose.Types.ObjectId, default: null, ref: "Category" }, // ref: name of the model
     properties: { type: Object },
+}, {
+    timestamps: true,
 });
 
 const Product = models?.Product || model('Product', ProductSchema); // check if productSchema already exists

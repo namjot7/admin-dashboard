@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation'
-import AdminLogo from './adminLogo';
+import AdminLogo from './AdminLogo';
+
 
 const Nav = ({ showNav }) => {
     const router = useRouter(); // does not work
@@ -12,8 +13,9 @@ const Nav = ({ showNav }) => {
     // console.log(usePathname()); // works
 
     // Classes for dynamic navbar
-    const inactiveLink = 'text-gray-400 md:text-gray-300 flex gap-1 py-2  px-2.5 rounded-l-lg hover:text-emerald-400 md:hover:scale-105 md:hover:text-white';
-    const activeLink = inactiveLink + " md:bg-white md:!text-black";
+    const inactiveLink = `text-gray-300  flex gap-1 py-2 px-2.5 rounded-l-lg hover:text-emerald-400 
+                        md:hover:scale-105 md:hover:text-white`;
+    const activeLink = inactiveLink + " text-white md:bg-white md:!text-black";
 
     // console.log(showNav);
 
@@ -22,11 +24,11 @@ const Nav = ({ showNav }) => {
         await router.push('/'); // home page 
         await signOut();
     }
+    // const [showNav, setshowNav] = useState(false);
+
     return (
         <aside className={`${showNav ? 'block' : 'hidden'} z-10 md:block bg-gray-800 h-full 
-        fixed top-12 w-full left-0 md:w-1/5 md:static md:bg-transparent my-2
-       
-            transition-all p-3 pr-0 `}>
+                    fixed top-12 w-full left-0 md:w-1/5 md:static md:bg-transparent my-2 transition-all p-3 pr-0 `}>
             <div className='hidden md:flex mb-5'>
                 <AdminLogo />
             </div>
@@ -69,7 +71,6 @@ const Nav = ({ showNav }) => {
                     </svg>
                     Sign out
                 </button>
-
             </nav>
         </aside>
     )
