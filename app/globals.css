@@ -20,7 +20,7 @@ h2,
 }
 
 .btn-secondary {
-  @apply bg-secondary hover:bg-secondary_hover text-base rounded-md py-0.5 px-3;
+  @apply bg-secondary text-black text-base rounded-sm py-1 px-2 mb-5 outline-none;
 }
 
 .btn-edit {
@@ -58,16 +58,16 @@ select:focus {
 /* Table */
 
 table.basic {
-  @apply w-3/4 bg-[#2d394a] rounded-md m-10 shadow-md shadow-gray-900;
+  @apply w-3/4 bg-gray-800 rounded-md m-10 shadow-md shadow-gray-900;
 }
 
 table.basic thead {
-  @apply text-lg font-semibold border-b border-gray-400;
+  @apply text-lg font-semibold border-b border-gray-600;
 }
 
 table.basic thead tr td,
 tbody tr td {
-  @apply px-8 py-2;
+  @apply px-4 py-2;
 }
 
 table.basic td {

@@ -2,27 +2,8 @@ import { initMongoose } from "@/lib/mongoose";
 import Product from "@/models/Product";
 import { NextResponse } from "next/server";
 
-// import Cors from 'cors';
-
-// const cors = Cors({
-//     origin: 'http://localhost:3001',
-//     methods: ['GET', 'POST', 'OPTIONS'],
-// });
-
-// function runMiddleware(req, res, fn) {
-//     return new Promise((resolve, reject) => {
-//         fn(req, res, (result) => {
-//             if (result instanceof Error) {
-//                 return reject(result);
-//             }
-//             return resolve(result);
-//         });
-//     });
-// }
-
 export const GET = async (req) => {
     await initMongoose();
-    // await runMiddleware(req, res, cors);
 
     // Get product by ID for editing from Req
     const symbols = Object.getOwnPropertySymbols(req);
