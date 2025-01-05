@@ -24,6 +24,7 @@ const Orders = () => {
                 <thead>
                     <tr>
                         <td>Order Date</td>
+                        <td>Paid</td>
                         <td>Recipient</td>
                         <td>Products</td>
                     </tr>
@@ -32,13 +33,15 @@ const Orders = () => {
                     {orders.length > 0 && orders.map(order => (
                         <tr key={order._id}>
                             <td>
-                                {(new Date(order.createdAt)).toDateString()} at&nbsp;
-                                {(new Date(order.createdAt)).toLocaleTimeString().substring(0, 4)}&nbsp;
-                                {(new Date(order.createdAt)).toLocaleTimeString().substring(8)}
                                 {/* Time is in UTC Universal: 5 hours ahead from Toronto */}
-                                {/* {order.createdAt
-                                    .replace('T', ' ')
-                                    .substring(0, 16)} */}
+                                {(new Date(order.createdAt)).toLocaleString()} at&nbsp;
+                                {/* OR */}
+                                {/* {(new Date(order.createdAt)).toDateString()} at&nbsp;
+                                {(new Date(order.createdAt)).toLocaleTimeString().substring(0, 4)}&nbsp;
+                                {(new Date(order.createdAt)).toLocaleTimeString().substring(8)} */}
+                            </td>
+                            <td className={order.paid ? "text-green-500" : 'text-red-500'}>
+                                {order.paid ? "YES" : "NO"}
                             </td>
                             <td>
                                 {order.username} {order.email} <br />

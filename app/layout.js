@@ -13,9 +13,11 @@ export default function RootLayout({ children }) {
       </SessionWrapper>
 
       {/* or just make this "Client" */}
-      {/* <SessionProvider>
+      {/* 
+      <SessionProvider>
         <body>{children}</body>
-      </SessionProvider> */}
+      </SessionProvider> 
+      */}
     </html>
   );
 }
