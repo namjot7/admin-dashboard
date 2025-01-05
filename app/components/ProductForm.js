@@ -226,13 +226,14 @@ const ProductForm = ({
                     ))} */}
 
                     {/* Public folder */}
-                    <ReactSortable className="flex flex-wrap gap-2"
+                    <ReactSortable className="relative flex flex-wrap gap-2"
                         list={images} setList={updateImagesOrder}>
                         {!!images.length && images.map((filepath) => (
-                            <div key={filepath} className="bg-white p-2 rounded-lg w-24 h-24">
+                            <div key={filepath} className="inline-block bg-white p-2 rounded-lg w-24 h-24">
                                 <img className="rounded-lg w-full h-full object-fill" src={filepath} alt="productImage" />
                             </div>
                         ))}
+
                     </ReactSortable>
 
                     {loading && (
@@ -242,9 +243,9 @@ const ProductForm = ({
                     )}
 
                     <label className='cursor-pointer w-24 h-24 flex items-center flex-col justify-center
-                            rounded-lg bg-white text-black'>
-                        <img src="/upload.svg" alt="" />
-                        <span className='text-primary'>Add Image</span>
+                            rounded-lg text-sm bg-white text-black dark:bg-slate-600 dark:text-gray-200'>
+                        <img className='dark:invert' src="/upload.svg" alt="" />
+                        <span>Add Image</span>
                         <input type="file" onChange={e => uploadImages(e)} className='hidden' name="" id="" multiple />
                     </label>
                 </div>

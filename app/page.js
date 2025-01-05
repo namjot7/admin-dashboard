@@ -1,7 +1,6 @@
 "use client"
 import Layout from "@/app/components/Layout";
 import { useSession } from "next-auth/react";
-import { ThemeToggler } from "./components/ThemeContext";
 
 export default function Home() {
   const { data: session } = useSession();
@@ -18,12 +17,12 @@ export default function Home() {
         </div> */}
 
         {/* picture only */}
-        <div className="absolute top-4 right-6 flex-center py-2">
+        <div className="absolute top-2 right-28 flex-center py-2">
           <img className="w-10 rounded-full" src={session?.user?.image} alt="profile picture" />
         </div>
-
-        <div>Hello, {session?.user?.name}
-          <ThemeToggler />
+        <div>
+          <h1>Dashboard</h1>
+          <span>Hello, {session?.user?.name}</span>
         </div>
       </div>
     </Layout>

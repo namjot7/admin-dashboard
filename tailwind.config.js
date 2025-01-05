@@ -10,8 +10,10 @@ module.exports = {
     extend: {
       colors: {
         primary: '#6d8cfb', // graident blue
-        primary_dark: '#31035e',
         primary_hover: '#9936f8',
+        primary_dark: '#31035e',
+        primary_dark2_hover: '#3556c8',
+        primary_dark2: '#304aa5',
         // primary2: '#a855f7',
         // secondary: "#096baa", // blue
         // secondary_hover: "#045a91",

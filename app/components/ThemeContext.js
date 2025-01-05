@@ -28,7 +28,7 @@ export const ThemeToggler = () => {
     return (
         <div className='absolute top-5 right-5 cursor-pointer'>
             {/* 2nd way */}
-            <div onClick={e => toggleTheme()} className="bg-gray-600 relative rounded-full w-20 h-8">
+            <div onClick={e => toggleTheme()} className="bg-slate-700 relative rounded-full w-20 h-8 hover:bg-slate-500 transition-all duration-500">
                 <button
                     className={`${theme == 'dark' ? 'left-12' : 'left-2'} text-white absolute top-1 transition-all duration-500`}>
                     <MoonIcon />

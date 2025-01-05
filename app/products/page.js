@@ -16,9 +16,11 @@ const Product = () => {
     return (
         <Layout>
             {/* bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 */}
-            <Link href="/products/add" className='bg-primary absolute top-20 right-4 md:top-6 md:right-6 hover:bg-primary_hover rounded-md py-1 px-3'>Add Product</Link>
-            <h1>All Products</h1>
+            <Link href="/products/add" className='btn-primary absolute top-20 right-4 md:top-16 md:right-6 '>
+                Add Product
+            </Link>
 
+            <h1>All Products</h1>
             <table className='basic'>
                 <thead>
                     <tr>

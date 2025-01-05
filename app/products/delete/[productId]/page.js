@@ -9,9 +9,6 @@ const Delete = ({ params }) => {
     const [productInfo, setproductInfo] = useState([])
     const { productId } = React.use(params); // Unwrap the params promise
 
-    const back = () => {
-        router.push("/products");
-    }
     const deleteProduct = async () => {
         await fetch("/api/products", {
             method: 'DELETE',
@@ -35,10 +32,10 @@ const Delete = ({ params }) => {
     return (
         <Layout>
             <div className='text-center mt-20'>
-                <h1>Do you really want to delete product <span className='text-danger'>{productInfo.title}</span> ?</h1>
+                <h1>Do you really want to delete product <span className='text-red-500'>{productInfo.title}</span> ?</h1>
                 {/* <div className="flex gap-3 "> */}
                 <button onClick={e => deleteProduct()} className='bg-red-500 hover:bg-red-600 px-3 py-1 rounded-md mx-3'>Yes</button>
-                <button onClick={e => back()} className=' bg-slate-400 hover:bg-slate-500 px-3 py-1 rounded-md'>No</button>
+                <button onClick={e => router.push("/products")} className=' bg-slate-400 hover:bg-slate-500 px-3 py-1 rounded-md'>No</button>
                 {/* </div> */}
             </div>
         </Layout>

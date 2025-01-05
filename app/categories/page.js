@@ -190,7 +190,7 @@ const Categories = ({ swal }) => {
                             </div>
                         ))}
                     </div>
-                    {editingCategory && <button type='button' className='bg-white text-black text-base rounded-md py-1 px-3 mr-2'
+                    {editingCategory && <button type='button' className='btn-secondary mt-5 !rounded-md mr-5'
                         onClick={e => resetForm()}>Cancel</button>
                     }
                     <button type='submit' className="btn-primary">Save</button>
