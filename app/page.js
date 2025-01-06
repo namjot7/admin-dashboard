@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <div>
+      <div className="">
         {/* picture + name */}
         {/* <div className="absolute top-6 right-24 flex-center btn-primary py-2">
           <img className="w-6 rounded-full" src={session?.user?.image} alt="profile picture" />

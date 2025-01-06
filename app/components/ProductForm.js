@@ -243,7 +243,7 @@ const ProductForm = ({
                     )}
 
                     <label className='cursor-pointer w-24 h-24 flex items-center flex-col justify-center
-                            rounded-lg text-sm bg-white text-black dark:bg-slate-600 dark:text-gray-200'>
+                            rounded-lg text-sm bg-gray-100 text-black dark:bg-slate-600 dark:text-gray-200'>
                         <img className='dark:invert' src="/upload.svg" alt="" />
                         <span>Add Image</span>
                         <input type="file" onChange={e => uploadImages(e)} className='hidden' name="" id="" multiple />

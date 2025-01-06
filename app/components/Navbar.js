@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation'
 export const AdminLogo = () => {
     return (
         <Link href={"/"} className='flex gap-1 items-center' >
-            <img className="invert" width={25} height={25} src="/adminIcon.png" alt="" />
+            <img className="dark:invert" width={25} height={25} src="/adminIcon.png" alt="" />
             <span>E-Commerce Admin</span>
         </Link >
     )
@@ -22,15 +22,15 @@ const Navbar = () => {
     const [showNav, setShowNav] = useState(false);
 
     // Classes for dynamic navbar
-    const inactiveLink = `text-gray-300  flex gap-1 py-2 px-2.5 rounded-l-lg hover:text-white 
-                       text-center md:hover:scale-105 md:hover:text-white`;
-    const activeLink = inactiveLink + " font-semibold text-white md:bg-white md:!text-black md:dark:bg-slate-300 md:dark:text-black";
+    const inactiveLink = `text-gray-700 dark:text-gray-300  flex gap-1 py-2 px-2.5 rounded-l-lg dark:hover:text-white 
+                       text-center hover:text-black md:hover:scale-105 dark:md:hover:text-white`;
+    const activeLink = inactiveLink + "  hover:text-white bg-primary !text-white font-semibold dark:md:bg-white dark:md:!text-black dark:md:bg-slate-300 dark:md:text-black";
 
     return (
         <>
             {/* Desktop Navbar */}
-            <aside className={`${showNav ? 'block ' : 'hidden'} z-10 md:block dark:bg-slate-800 min-h-screen 
-                     fixed top-12 w-full left-0 md:w-1/5 md:static transition-all p-3 py-5 pr-0`}>
+            <aside className={`${showNav ? 'block' : 'hidden'}   z-10 md:block bg-slate-100 dark:bg-slate-800 min-h-screen 
+                     fixed top-[54px] w-full left-0 md:w-1/5 md:static transition-all p-3 py-5 pr-0`}>
                 <div className='hidden md:flex mb-5'>
                     <AdminLogo />
                 </div>
@@ -70,8 +70,10 @@ const Navbar = () => {
             </aside>
 
             {/* Mobile Navbar */}
-            <nav className={`{${showNav ? 'hidden bg-slate-900' : 'block'} md:hidden bg-slate-800 px-3 py-2 flex justify-between items-center`}>
-                <button className='z-50 size-9' onClick={e => setShowNav(prev => !prev)}>
+            <nav
+                className={`{${showNav ? 'hidden dark:bg-slate-900 border-b-4 border-gray-300 ' : 'block'}
+                    dark:border-0 md:hidden dark:text-white bg-gray-100  dark:bg-slate-800 px-3 py-2 flex justify-between items-center`}>
+                <button className='z-50 size-9 ' onClick={e => setShowNav(prev => !prev)}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" >
                         <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>

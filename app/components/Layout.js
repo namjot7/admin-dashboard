@@ -1,9 +1,7 @@
 "use client"
-import Navbar, { AdminLogo } from "@/app/components/Navbar";
-import { useSession, signIn, signOut } from "next-auth/react";
-import { useContext, useState } from "react";
-import { ThemeContext, ThemeToggler } from "./ThemeContext";
-
+import Navbar from "@/app/components/Navbar";
+import { useSession, signIn } from "next-auth/react";
+import { ThemeToggler } from "./ThemeContext";
 
 export default function Layout({ children }) {
     const { data: session } = useSession();
@@ -22,7 +20,7 @@ export default function Layout({ children }) {
     }
     // Logged in
     return (
-        <div className="relative bg-primary text-white dark:bg-slate-900 flex flex-col md:flex-row  max-w-screen min-h-screen">
+        <div className="relative bg-primary text-black dark:text-white dark:bg-slate-900 flex flex-col md:flex-row  max-w-screen min-h-screen">
             <Navbar />
             <div className="relative m-3 p-5 bg-white dark:bg-slate-800 flex-grow rounded-lg">
                 {children}

@@ -7,7 +7,6 @@
   margin: 0;
   box-sizing: border-box;
 }
-
 /* Headings  */
 
 h1 {
@@ -25,7 +24,7 @@ h3 {
 /* Buttons */
 
 .btn-primary {
-  @apply bg-primary text-base rounded-md py-1 px-3 hover:bg-primary_hover dark:bg-primary_dark2 dark:hover:bg-primary_dark2_hover;
+  @apply text-white text-base rounded-md py-1 px-3 bg-primary_dark2 hover:bg-primary_dark2_hover;
 }
 
 .btn-secondary {
@@ -33,11 +32,11 @@ h3 {
 }
 
 .btn-edit {
-  @apply bg-primary hover:bg-primary_hover flex gap-2 px-3 pr-5 py-1 rounded-md dark:bg-primary_dark2 dark:hover:bg-primary_dark2_hover;
+  @apply text-white flex gap-2 px-3 pr-5 py-1 rounded-md bg-primary_dark2 hover:bg-primary_dark2_hover;
 }
 
 .btn-delete {
-  @apply bg-danger hover:bg-red-700 flex gap-2 px-3 pr-5 py-1 rounded-md;
+  @apply bg-danger text-white hover:bg-red-700 flex gap-2 px-3 pr-5 py-1 rounded-md;
 }
 
 .btn-dark {
@@ -59,7 +58,7 @@ h3 {
 input,
 textarea,
 select {
-  @apply text-black w-full rounded-sm py-1 px-2 mb-5 outline-none dark:bg-slate-700 dark:text-white;
+  @apply bg-gray-100 text-black w-full rounded-sm py-1 px-2 mb-5 outline-none dark:bg-slate-700 dark:text-white;
 }
 
 input:focus,
@@ -71,11 +70,11 @@ select:focus {
 /* Table */
 
 table.basic {
-  @apply w-3/4 dark:bg-slate-700 rounded-md m-10 shadow-md shadow-gray-900;
+  @apply w-3/4 dark:bg-slate-700 rounded-md m-10 shadow-md shadow-gray-300 dark:shadow-gray-900;
 }
 
 table.basic thead {
-  @apply text-lg font-semibold border-b border-gray-600;
+  @apply text-lg font-semibold border-b border-gray-400 dark:border-gray-600;
 }
 
 table.basic thead tr td,
@@ -85,74 +84,4 @@ tbody tr td {
 
 table.basic td {
   @apply py-1 my-1;
-}
-
-/* Orders table mobile */
-
-/* .orders-card
-display: flex;
-gap: 15px;
-font-size: 18px;
-background-color: #383838;
-padding: 15px 20px;
-margin-bottom: 20px;
-border-radius: 9px;
-
->div:nth-child(2){
-    width: 100%;
-}
-img{
-    width: 115px;
-    border-radius: 9px;
-}
-svg{
-    cursor: pointer;
-} */
-
-.orders-mobile {
-  display: grid;
-  gap: 8px;
-  /* Spacing between grid items */
-  padding: 16px;
-  /* Add padding around the container */
-  /* background-color: #f9f9f9; Light background for contrast */
-  border-radius: 8px;
-  /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Subtle shadow */
-}
-
-.orders-headers {
-  /* display: grid; */
-  /* grid-template-columns: repeat(4, 1fr); 3 equal columns */
-  font-weight: bold;
-  text-align: center;
-  /* background-color: #eaeaea; Background for headers */
-  border-radius: 8px;
-  padding: 8px;
-}
-
-.orders-details {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  /* Match headers */
-  text-align: center;
-  /* background-color: #fff; White background for details */
-  border-radius: 8px;
-  padding: 8px;
-  border: 1px solid #ddd;
-  /* Subtle border for separation */
-}
-
-.orders-details div {
-  padding: 8px;
-  /* Spacing inside each cell */
-}
-
-/* Add responsiveness for larger screens */
-@media (min-width: 768px) {
-  .orders-mobile {
-    display: none;
-    /* Hide the mobile view on larger screens */
-  }
 }

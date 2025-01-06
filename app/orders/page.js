@@ -66,7 +66,7 @@ const Orders = () => {
             {orders.length > 0 && orders.map(order => {
                 let orderTotal = 0;
                 return (
-                    <div key={order._id} className='block md:hidden backdrop-blur-xl bg-slate-700 p-5 rounded-md mb-10 shadow-sm shadow-slate-600'>
+                    <div key={order._id} className='block md:hidden bg-gray-100  dark:bg-slate-700 p-5 rounded-md mb-10 shadow-sm shadow-gray-400 dark:shadow-slate-600'>
                         {/* Order Info */}
                         <h2>
                             Order Summary:
@@ -74,13 +74,13 @@ const Orders = () => {
                                 {order.paid ? "Paid" : 'Pending'}
                             </span>
                         </h2>
-                        <span className='text-gray-200'>{(new Date(order.createdAt)).toLocaleString()}</span>
-                        <h3 className='mt-5 text-gray-200'>
+                        <span className='text-gray-800 dark:text-gray-200'>{(new Date(order.createdAt)).toLocaleString()}</span>
+                        <h3 className='mt-5 text-gray-800 dark:text-gray-200'>
                             Order Id:&nbsp;
                             <span className='font-normal'>{order._id}</span>
                         </h3>
                         {/* Customer info */}
-                        <div className='text-gray-200'>
+                        <div className='text-gray-800 dark:text-gray-200'>
                             <div>
                                 Customer:&nbsp;
                                 {order.username} ({order.email})
